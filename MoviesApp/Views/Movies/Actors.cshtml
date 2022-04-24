@@ -1,0 +1,40 @@
+@using System.Linq
+@model IEnumerable<MoviesApp.ViewModels.MoviesActorsViewModel>
+
+@{
+    ViewData["Title"] = "Actors";
+}
+
+<h1>Actors</h1>
+<td>
+    <h2>@Model.First().Title</h2>
+</td>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><label asp-for="@Model.FirstOrDefault().Name">Name</label></th>
+            <th><label asp-for="@Model.FirstOrDefault().BirthDay">BirthDay</label></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.First().Name != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Actors" asp-route-id="@item.ActorId">@item.Name</a>
+                    </td>
+                    <td>
+                        @item.BirthDay.ToString("dd.MM.yyyy")
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Details" asp-controller="Movies" asp-route-id="@ViewBag.MovieId">Details</a> |
+    <a asp-action="Index">Movies</a>
+</div>

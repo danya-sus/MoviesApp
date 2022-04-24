@@ -1,0 +1,36 @@
+@model MoviesApp.ViewModels.ActorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Actor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-for="FirstName"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FirstName
+        </dd>
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="LastName"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LastName
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="BirthDay"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Model.BirthDay.ToString("dd.MM.yyyy")
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
